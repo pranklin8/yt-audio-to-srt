@@ -234,7 +234,7 @@ yt-audio-to-srt/
 
 ## ⚠️ Notes
 
-- Internet connection is required.
+- Internet connection is required for downloading model.
 - FFmpeg must be installed.
 - Processing time depends on video length.
 - Larger Whisper models provide better accuracy but require more resources.
