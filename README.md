@@ -1,32 +1,102 @@
-# 🎬 YouTube to English SRT Generator
+<div align="center">
 
-Generate English subtitle (`.srt`) files from YouTube videos using OpenAI Whisper.
+# 🎬 YT Audio to SRT
 
-The script:
+### Generate English Subtitles from YouTube Videos using OpenAI Whisper
 
-- Downloads audio from a YouTube video
-- Extracts and converts it to MP3
-- Transcribes and translates speech to English
-- Generates an SRT subtitle file
+<p>
+  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/OpenAI-Whisper-10A37F?style=for-the-badge">
+  <img src="https://img.shields.io/badge/yt--dlp-Latest-FF0000?style=for-the-badge">
+  <img src="https://img.shields.io/badge/FFmpeg-Required-007808?style=for-the-badge">
+</p>
 
----
+<p>
+  Download YouTube audio, translate speech to English, and generate ready-to-use SRT subtitle files automatically.
+</p>
 
-## Features
-
-- YouTube audio downloading with `yt-dlp`
-- Automatic speech recognition using Whisper
-- Translation to English
-- Standard SRT subtitle output
-- Simple command-line interface
+</div>
 
 ---
 
-## Requirements
+## ✨ Features
 
-- Python 3.8+
-- FFmpeg
+✅ Download audio directly from YouTube
 
-### Python Packages
+✅ Convert audio to MP3 using FFmpeg
+
+✅ Automatic speech recognition with Whisper
+
+✅ Translate speech into English
+
+✅ Generate standard `.srt` subtitle files
+
+✅ Supports multiple spoken languages
+
+✅ Simple and lightweight CLI tool
+
+---
+
+## 🔄 Workflow
+
+```text
+┌─────────────────────┐
+│   YouTube Video     │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Download Audio      │
+│      (yt-dlp)       │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Convert to MP3      │
+│      (FFmpeg)       │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Whisper Transcribe  │
+│   + Translation     │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Generate SRT File   │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ translated_en.srt   │
+└─────────────────────┘
+```
+
+---
+
+## 📋 Requirements
+
+| Requirement | Version |
+|------------|---------|
+| Python | 3.8+ |
+| FFmpeg | Latest |
+| yt-dlp | Latest |
+| Whisper | Latest |
+| PyTorch | Latest |
+
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/pranklin8/yt-audio-to-srt.git
+cd yt-audio-to-srt
+```
+
+### 2️⃣ Install Dependencies
 
 ```bash
 pip install yt-dlp openai-whisper torch
@@ -34,19 +104,12 @@ pip install yt-dlp openai-whisper torch
 
 ---
 
-## Install FFmpeg
+## 🎥 Install FFmpeg
 
-Verify FFmpeg is installed:
-
-```bash
-ffmpeg -version
-```
-
-If FFmpeg is not installed:
-
-### Ubuntu / Debian
+### Linux (Ubuntu/Debian)
 
 ```bash
+sudo apt update
 sudo apt install ffmpeg
 ```
 
@@ -58,40 +121,23 @@ brew install ffmpeg
 
 ### Windows
 
-Download and install from:
+Download:
 
-https://ffmpeg.org/download.html
+🔗 https://ffmpeg.org/download.html
 
 Add FFmpeg to your system PATH.
 
----
-
-## Installation
-
-Clone the repository:
+Verify installation:
 
 ```bash
-git clone https://github.com/yourusername/youtube-english-srt-generator.git
-cd youtube-english-srt-generator
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Or:
-
-```bash
-pip install yt-dlp openai-whisper torch
+ffmpeg -version
 ```
 
 ---
 
-## Usage
+## 🚀 Usage
 
-Run the script:
+Run the application:
 
 ```bash
 python main.py
@@ -104,7 +150,7 @@ Enter YouTube URL:
 https://www.youtube.com/watch?v=VIDEO_ID
 ```
 
-Example output:
+Example:
 
 ```text
 Downloading audio...
@@ -116,7 +162,7 @@ Done. Saved: translated_en.srt
 
 ---
 
-## Output
+## 📄 Output Example
 
 Generated file:
 
@@ -124,7 +170,7 @@ Generated file:
 translated_en.srt
 ```
 
-Example:
+Example subtitle:
 
 ```srt
 1
@@ -138,7 +184,7 @@ Welcome to today's presentation.
 
 ---
 
-## Whisper Models
+## 🧠 Whisper Models
 
 Current model:
 
@@ -148,62 +194,66 @@ model = whisper.load_model("medium")
 
 Available models:
 
-- tiny
-- base
-- small
-- medium
-- large
+| Model | Speed | Accuracy |
+|---------|---------|---------|
+| tiny | ⚡⚡⚡⚡⚡ | ⭐⭐ |
+| base | ⚡⚡⚡⚡ | ⭐⭐⭐ |
+| small | ⚡⚡⚡ | ⭐⭐⭐⭐ |
+| medium | ⚡⚡ | ⭐⭐⭐⭐⭐ |
+| large | ⚡ | ⭐⭐⭐⭐⭐⭐ |
 
-For faster processing on low-end hardware:
+Example:
 
 ```python
 model = whisper.load_model("small")
 ```
 
-For maximum accuracy:
-
-```python
-model = whisper.load_model("large")
-```
-
 ---
 
-## Project Workflow
+## 📂 Project Structure
 
 ```text
-YouTube Video
-      ↓
-Download Audio
-      ↓
-Convert to MP3
-      ↓
-Whisper Translation
-      ↓
-Generate SRT
-      ↓
-translated_en.srt
+yt-audio-to-srt/
+│
+├── main.py
+├── README.md
+└── translated_en.srt
 ```
 
 ---
 
-## Notes
+## 🛠 Tech Stack
+
+- 🐍 Python
+- 🎙 OpenAI Whisper
+- 📥 yt-dlp
+- 🎵 FFmpeg
+- 🔥 PyTorch
+
+---
+
+## ⚠️ Notes
 
 - Internet connection is required.
-- FFmpeg must be installed and accessible from PATH.
-- Processing time depends on video length and selected Whisper model.
-- Translation quality depends on audio clarity.
+- FFmpeg must be installed.
+- Processing time depends on video length.
+- Larger Whisper models provide better accuracy but require more resources.
 
 ---
 
-## License
-
-MIT License
-
----
-
-## Acknowledgments
+## 🙌 Credits
 
 - OpenAI Whisper
 - yt-dlp
 - FFmpeg
 - PyTorch
+
+---
+
+<div align="center">
+
+### ⭐ If you find this project useful, consider giving it a star!
+
+🔗 https://github.com/pranklin8/yt-audio-to-srt
+
+</div>
